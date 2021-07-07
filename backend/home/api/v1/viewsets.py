@@ -25,8 +25,10 @@ class LoginViewSet(ViewSet):
     serializer_class = AuthTokenSerializer
 
     def create(self, request):
+        request_data = request.data
+        request_data['username'] = request_data.get('email')
         serializer = self.serializer_class(
-            data=request.data, context={"request": request}
+            data=request_data, context={"request": request}
         )
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
