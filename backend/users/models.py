@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
+from common.storage_backends import select_storage
+from common.utils import user_directory_path
 
 
 class User(AbstractUser):
@@ -20,7 +22,9 @@ class User(AbstractUser):
 
     # First Name and Last Name do not cover name patterns
     # around the globe.
-    name = models.CharField(_("Name of User"), blank=True, null=True, max_length=255)
+    age = models.IntegerField(_("Age of User"), null=True, blank=True)
+    location = models.TextField(_("Location of User"), null=True, blank=True)
+    picture = models.ImageField(storage=select_storage(), upload_to=user_directory_path, null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse("users:detail", kwargs={"username": self.username})

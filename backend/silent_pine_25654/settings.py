@@ -223,12 +223,11 @@ if USE_S3:
     AWS_DEFAULT_ACL = env.str("AWS_DEFAULT_ACL", "public-read")
     AWS_MEDIA_LOCATION = env.str("AWS_MEDIA_LOCATION", "media")
     AWS_AUTO_CREATE_BUCKET = env.bool("AWS_AUTO_CREATE_BUCKET", True)
-    DEFAULT_FILE_STORAGE = env.str(
-        "DEFAULT_FILE_STORAGE", "home.storage_backends.MediaStorage"
-    )
-    MEDIA_URL = '/mediafiles/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-
+    DEFAULT_FILE_STORAGE = env.str("DEFAULT_FILE_STORAGE", "home.storage_backends.MediaStorage")
+    PRIVATE_FILE_STORAGE = env.str("PRIVATE_FILE_STORAGE", "aaps.storage_backends.PrivateMediaStorage")
+else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # start fcm_django push notifications
