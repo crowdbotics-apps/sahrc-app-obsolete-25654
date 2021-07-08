@@ -1,28 +1,62 @@
 import React from 'react'
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { colors } from '../utils/colors';
 
-const Button = ({ name }) => (
-  <View style={styles.body}>
-    <TouchableOpacity style={styles.button}> 
-      <Text style={styles.buttonText}>
-        {name}
-      </Text>
-    </TouchableOpacity>
-  </View>
-)
+const Button = ({ name, onPress, style }) => {
+  if (style === true) {
+    return (
+      <View style={styles.body02}>
+        <TouchableOpacity style={styles.button} onPress={onPress} > 
+          <Text style={styles.buttonText02}>
+            {name}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+  return (
+    <View style={styles.body01}>
+      <TouchableOpacity style={styles.button} onPress={onPress} > 
+        <Text style={styles.buttonText01}>
+          {name}
+        </Text>
+      </TouchableOpacity>
+    </View>
+  ) 
+}
 const styles = StyleSheet.create({
-  buttonText: {
+  buttonText02: {
     textAlign: 'center',
-    fontSize: 16,
-    fontWeight: 'bold'
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.white
+  },
+  buttonText01: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.green
   },
   button: {
-    borderRadius: 10,
-    borderWidth: 1,
     padding: 15
   },
-  body: {
-    padding: 10
+  body02: {
+    marginTop: 15,
+    padding: 10,
+    borderColor: colors.white,
+    borderRadius: 10,
+    borderWidth: 1,
+    height: 76,
+   
+  },
+  body01: {
+    marginTop: 15,
+    padding: 10,
+    backgroundColor: colors.white,
+    borderRadius: 10,
+    borderWidth: 1,
+    height: 76,
+   
   }
 })
 export default Button;

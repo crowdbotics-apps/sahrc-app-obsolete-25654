@@ -7,6 +7,12 @@ import { useDispatch } from 'react-redux';
 import { StyleSheet } from 'react-native';
 
 import Login from './screens/Login'
+import ForgotPassword from './screens/ForgotPassword';
+import NewPassword from './screens/NewPassword';
+import InputToken from './screens/InputToken';
+import SignUp from './screens/SignUp';
+import SplashScreen from './screens/SplashScreen';
+import onBoarding from './screens/onBoarding';
 
 const isReadyRef = React.createRef();
 const navigationRef = React.createRef();
@@ -18,12 +24,17 @@ const Navigation = () => {
   
   return (
     <NavigationContainer >
-      <Stack.Navigator initialRouteName={Login}
-        screenOptions={() => ({
-          headerTitleAlign: 'center'
-        })}
+      <Stack.Navigator initialRouteName={onBoarding}
+        screenOptions={{ headerShown: false }}
       >
+
+        <Stack.Screen name="onBoarding" component={onBoarding} />
+        <Stack.Screen name="SplashScreen" component={SplashScreen} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="InputToken" component={InputToken} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="NewPassword" component={NewPassword} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       </Stack.Navigator>
     </NavigationContainer>
   )
