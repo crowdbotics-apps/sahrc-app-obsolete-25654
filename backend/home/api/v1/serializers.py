@@ -17,18 +17,15 @@ User = get_user_model()
 class SignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'name', 'email', 'password')
+        fields = ('id', 'email', 'password', 'first_name', 'last_name', 'age', 'location', 'picture')
         extra_kwargs = {
-            'password': {
-                'write_only': True,
-                'style': {
-                    'input_type': 'password'
-                }
-            },
-            'email': {
-                'required': True,
-                'allow_blank': False,
-            }
+            'password': {'write_only': True, 'style': {'input_type': 'password'}},
+            'email': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'first_name': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'last_name': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'age': {'required': True, 'allow_null': False},
+            'location': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'picture': {'required': False, 'allow_null': True}
         }
 
     def _get_request(self):
@@ -48,7 +45,11 @@ class SignupSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User(
             email=validated_data.get('email'),
-            name=validated_data.get('name'),
+            first_name=validated_data.get('first_name'),
+            last_name=validated_data.get('last_name'),
+            age=validated_data.get('age'),
+            location=validated_data.get('location'),
+            picture=validated_data.get('picture'),
             username=generate_unique_username([
                 validated_data.get('name'),
                 validated_data.get('email'),
@@ -81,7 +82,15 @@ class HomePageSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'email', 'name']
+        fields = ['id', 'email', 'first_name', 'last_name', 'age', 'location', 'picture']
+        extra_kwargs = {
+            'email': {'read_only': True,},
+            'first_name': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'last_name': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'age': {'required': True, 'allow_null': False},
+            'location': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'picture': {'required': True, 'allow_null': False}
+        }
 
 
 class PasswordSerializer(PasswordResetSerializer):

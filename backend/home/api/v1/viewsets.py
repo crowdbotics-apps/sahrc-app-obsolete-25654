@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
-from rest_framework.permissions import IsAdminUser
-from rest_framework.viewsets import ModelViewSet, ViewSet
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.viewsets import ModelViewSet, ViewSet, GenericViewSet
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
@@ -51,3 +52,10 @@ class HomePageViewSet(ModelViewSet):
     authentication_classes = (SessionAuthentication, TokenAuthentication)
     permission_classes = [IsAdminUser]
     http_method_names = ["get", "put", "patch"]
+
+class ProfileViewSet(ModelViewSet):
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user

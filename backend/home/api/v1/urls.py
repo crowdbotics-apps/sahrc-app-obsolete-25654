@@ -6,7 +6,9 @@ from home.api.v1.viewsets import (
     LoginViewSet,
     HomePageViewSet,
     CustomTextViewSet,
-)
+    ProfileViewSet)
+
+retrieve_update = {'get': 'retrieve', 'patch': 'partial_update'}
 
 router = DefaultRouter()
 router.register("signup", SignupViewSet, basename="signup")
@@ -16,4 +18,5 @@ router.register("homepage", HomePageViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
+    path("profile/", ProfileViewSet.as_view(retrieve_update), name="profile")
 ]
