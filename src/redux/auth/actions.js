@@ -20,7 +20,7 @@ export const logout = () => ({
   type: actions.AUTH_LOGOUT,
 });
 
-export const resetPassword = ({ email }) => ({
+export const resetPassword = (email) => ({
   type: actions.AUTH_PASSWORD_RECOVER_REQUEST,
   email,
 });

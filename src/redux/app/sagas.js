@@ -18,7 +18,7 @@ function updateProfile ({ profile, token }) {
 
   return axios({
     method: 'patch',
-    url: `${BASE_URL}/api/v1/profile/${profile.id}/`,
+    url: `${BASE_URL}/api/v1/profile/`,
     headers: {
       Authorization: `Token ${token}`,
       'Content-Type': 'multipart/form-data'
@@ -26,6 +26,7 @@ function updateProfile ({ profile, token }) {
     data,
   });
 }
+
 function handleGetProfile ({ id }) {
   return sagasRunner({
     successType: actions.APP_GET_PROFILE_SUCCESS,
@@ -58,6 +59,4 @@ function handleUpdateProfile ({ profile }) {
 export default all([
   takeLatest(actions.APP_GET_PROFILE_REQUEST, handleGetProfile),
   takeLatest(actions.APP_UPDATE_PROFILE_REQUEST, handleUpdateProfile),
-
-
 ]);

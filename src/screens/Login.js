@@ -35,7 +35,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View style={styles.body}>
-      <Layout title="Log in" onPressX={() => navigation.navigate('onBoarding')} onPressBack={() => navigation.navigate('onBoarding')} />
+      <Layout title="Log in" onPressX={() => navigation.navigate('OnBoarding')} onPressBack={() => navigation.navigate('OnBoarding')} />
       <View style={styles.login}>
         <Input onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
         <Input onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 
   },
   body: {
-    padding: 17,
+    padding: 16,
     backgroundColor: colors.green,
     flex: 1
   }

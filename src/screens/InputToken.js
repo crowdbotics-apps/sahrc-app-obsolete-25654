@@ -6,7 +6,6 @@ import {
 } from 'react-native'
 import { colors } from '../utils/colors'
 import Layout from '../components/Layout'
-import Input from '../components/Input'
 import Button from '../components/Button'
 
 const InputToken = () => {

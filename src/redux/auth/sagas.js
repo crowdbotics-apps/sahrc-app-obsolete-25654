@@ -148,7 +148,7 @@ function *handlePasswordRecovery (action) {
   const { email } = action;
 
   try {
-    const { status } = yield call(sendPasswordRecovery, { email });
+    const { status, data } = yield call(sendPasswordRecovery, { email });
 
     if (status === 200) {
       yield put({
@@ -156,8 +156,16 @@ function *handlePasswordRecovery (action) {
         email,
       });
 
-      // you can change the navigate for navigateAndResetStack to go to a protected route
-      navigate('Signin');
+      Alert.alert(data.detail, '', [
+        {
+          text: 'OK',
+          onPress: () => {
+          // you can change the navigate for navigateAndResetStack to go to a protected route
+            navigate('Login');
+          }
+        }
+      ])
+
     } else {
       yield put({
         type: AUTH_PASSWORD_RECOVER_ERROR,

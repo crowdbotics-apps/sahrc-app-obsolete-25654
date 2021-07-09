@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { 
   View, 
   StyleSheet, 
@@ -18,15 +18,19 @@ import { updateProfile } from '../redux/app/actions';
 const Profile = () => {
   const dispatch = useDispatch()
   const [edit, setEdit] = useState(false)
+  const [data, setData] = useState({})
   const profile = useSelector((state) => state.App.profile)
 
-  const [data, setData] = useState({
-    email: profile?.email,
-    location: profile?.location,
-    first_name: profile?.first_name,
-    last_name: profile?.last_name,
-    
-  })
+  useEffect(() => {
+    if (profile?.id) {
+      setData({
+        email: profile?.email,
+        location: profile?.location,
+        first_name: profile?.first_name,
+        last_name: profile?.last_name,
+      })
+    }
+  }, [profile])
 
   const onChange = (key, value) => {
     setData({
@@ -36,9 +40,7 @@ const Profile = () => {
   }
 
   const onSubmit = () => {
-    
     dispatch(updateProfile(data))
-    
   }
   
   
@@ -54,17 +56,17 @@ const Profile = () => {
         <View style={styles.form}>
           <View style={styles.inputContainer}>
             <Text style={styles.inputTitle}>Email: </Text>
-            <TextInput style={styles.input} onChangeText={(v) => onChange('email', v)} value={data.email} />
+            <TextInput editable={edit} style={styles.input} onChangeText={(v) => onChange('email', v)} value={data.email} />
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputTitle}>Location: </Text>
-            <TextInput style={styles.input} onChangeText={(v) => onChange('location', v)} value={data.location}/>
+            <TextInput editable={edit} style={styles.input} onChangeText={(v) => onChange('location', v)} value={data.location}/>
           </View>
           <View style={styles.inputContainer}>
             <View style={{ flexDirection: 'row',
               alignItems: 'center' }}>
               <Text style={styles.inputTitle}>Password: </Text>
-              <TextInput style={styles.inputPass} placeholder="New password" secureTextEntry={true}/>
+              <TextInput editable={edit} style={styles.inputPass} placeholder="New password" secureTextEntry={true}/>
             </View>
             <TouchableOpacity><Text style={styles.passTitle}>Change</Text></TouchableOpacity>
           </View>

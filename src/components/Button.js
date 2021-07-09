@@ -51,25 +51,21 @@ const styles = StyleSheet.create({
     color: colors.green
   },
   button: {
-    padding: 15
+    padding: 8
   },
   body02: {
     marginTop: 15,
     padding: 10,
     //  borderColor: colors.white,
     borderRadius: 10,
-    borderWidth: 2,
-    height: 76,
-   
+    borderWidth: 2,   
   },
   body01: {
     marginTop: 15,
     padding: 10,
     backgroundColor: colors.white,
     borderRadius: 10,
-    borderWidth: 1,
-    height: 76,
-   
+    borderWidth: 1,   
   }
 })
 export default Button;

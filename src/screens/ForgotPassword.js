@@ -9,26 +9,24 @@ import { colors } from '../utils/colors'
 import Layout from '../components/Layout'
 import Input from '../components/Input'
 import Button from '../components/Button'
-import { resetPassword } from '../redux/app/actions'
+import { resetPassword } from '../redux/auth/actions'
 
 const ForgotPassword = ({ navigation }) => {
   const dispatch = useDispatch()
 
-  const [reset, setReset] = useState('')
+  const [email, setEmail] = useState('')
   const press = () => {
-    if (!reset) {
-      Alert.alert('Please enter all fields')
+    if (!email) {
+      Alert.alert('Please enter your email')
     } else {
-      console.log('forgotScreen :>> ', reset);
-      dispatch(resetPassword(reset))
+      dispatch(resetPassword(email))
     }
   }
 
-
   return (
     <View style={styles.body}>
-      <Layout title="Forgot password" onPressX={() => navigation.navigate('onBoarding')} onPressBack={() => navigation.navigate('Login')}/>
-      <Input onChangeText={setReset} placeholder="Enter email address" />
+      <Layout title="Forgot password" onPressX={() => navigation.navigate('OnBoarding')} onPressBack={() => navigation.navigate('Login')}/>
+      <Input onChangeText={setEmail} placeholder="Enter email address" />
       <Button onPress={() => press()} name="Reset Password" />
     </View>
   ) 

@@ -20,7 +20,7 @@ const SignUp = ({ navigation }) => {
   const [values, setValues] = useState({});
 
   const onSubmit = () => {
-    if (!values.email || !values.password || !values.first_name || !values.last_name || !values.location || !values.age) {
+    if (!values.email || !values.password || !values.first_name || !values.last_name || !values.location || !values.birth_date) {
       Alert.alert('Please enter all fields')
     } else if (values.password !== values.confirm_password) {
       Alert.alert('Passwords do not match')
@@ -35,19 +35,20 @@ const SignUp = ({ navigation }) => {
       [key]: value
     })
   }
+
   return (
     <ScrollView>
       <View style={styles.body}>
-        <Layout title="Sign Up" onPressX={() => navigation.navigate('onBoarding')} onPressBack={() => navigation.navigate('onBoarding')}/>
+        <Layout title="Sign Up" onPressX={() => navigation.navigate('OnBoarding')} onPressBack={() => navigation.navigate('OnBoarding')}/>
         <View style={styles.container} >
           <Input onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
           <View style={styles.containerName}>
-            <Input onChangeText={(v) => onChange('first_name', v)} value={values.first_name} placeholder="Name" width="45%" paddingLeft="5%"/>
-            <Input onChangeText={(v) => onChange('last_name', v)} value={values.last_name} placeholder="Sure Name" width="45%" paddingLeft="5%"/>
+            <Input onChangeText={(v) => onChange('first_name', v)} value={values.first_name} placeholder="Name" width="48%" />
+            <Input onChangeText={(v) => onChange('last_name', v)} value={values.last_name} placeholder="Last Name" width="48%" marginLeft="4%"/>
           </View>
           <View style={styles.containerName}>
-            <Input onChangeText={(v) => onChange('age', v)} value={values.age} placeholder="Age" width="45%" paddingLeft="5%"/>
-            <Input onChangeText={(v) => onChange('location', v)} value={values.location} placeholder="Location" width="45%" paddingLeft="5%"/>
+            <Input onChangeText={(v) => onChange('birth_date', v)} value={values.birth_date} placeholder="Date of Birth" width="48%" />
+            <Input onChangeText={(v) => onChange('location', v)} value={values.location} placeholder="Location" width="48%" marginLeft="4%"/>
              
           </View>
           <Input onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />

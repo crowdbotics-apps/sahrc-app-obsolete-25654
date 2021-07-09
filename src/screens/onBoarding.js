@@ -9,18 +9,19 @@ import {
 import { colors } from '../utils/colors'
 import Button from '../components/Button'
 
-const onBoarding = ({ navigation }) => (
-  <ScrollView style={styles.scroll}>
+const title = `The Social & Health
+Research Center`
+
+const OnBoarding = ({ navigation }) => (
+  <ScrollView contentContainerStyle={styles.scrollContent} style={styles.scroll}>
     <View style={styles.body}>
       <Image style={styles.icon} source={require('../assets/VectorWhite.png')} />
-      <Text style={styles.text}>The Social & Health</Text>
-      <Text style={styles.text}>Research Center</Text>
-      <View style={styles.buttonContainer}>
-        <Text style={styles.text}>Striving to Prevent Obesity, Diabetes and Heart Disease by Promoting Healthy Lifestyles</Text>
-        <View style={styles.space}/>   
-        <Button name="Log in" color="white" onPress={() => navigation.navigate('Login')} />
-        <Button name="Sign Up" onPress={() => navigation.navigate('SignUp')} />
-      </View>
+      <Text style={styles.text}>{title}</Text>
+    </View>
+    <View style={styles.buttonContainer}>
+      <Text style={styles.subText}>Striving to Prevent Obesity, Diabetes and Heart Disease by Promoting Healthy Lifestyles</Text>
+      <Button name="Log in" color="white" onPress={() => navigation.navigate('Login')} />
+      <Button name="Sign Up" onPress={() => navigation.navigate('SignUp')} />
     </View>
   </ScrollView>
   
@@ -31,13 +32,19 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '100%',
-    marginTop: '40%'
   },
   text: {
     color: colors.white,
     fontWeight: 'bold',
     fontSize: 22,
     textAlign: 'center'
+  },
+  subText: {
+    color: colors.white,
+    fontSize: 18,
+    lineHeight: 24,
+    textAlign: 'center',
+    padding: 24
   },
   icon: {
     width: 92,
@@ -50,8 +57,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 17,
   },
+  scrollContent: {
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    alignItems: 'center',
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+  },
   scroll: {
-    backgroundColor: colors.green 
+    backgroundColor: colors.green,
   }
 })
-export default onBoarding;
+export default OnBoarding;
