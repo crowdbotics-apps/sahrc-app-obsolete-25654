@@ -14,7 +14,7 @@
   "dependencies": {
     "@modules/chat": "file:./modules/chat",
     "@modules/privacy-policy": "file:./modules/privacy-policy",
-    "@modules/push-notifications": "file:./modules/push-notifications",
+    "@modules/push-notifications": "file:./modules/push-notifications/",
     "@modules/terms-and-conditions": "file:./modules/terms-and-conditions",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.10",
