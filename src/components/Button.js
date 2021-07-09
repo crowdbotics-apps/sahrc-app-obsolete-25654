@@ -2,12 +2,25 @@ import React from 'react'
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import { colors } from '../utils/colors';
 
-const Button = ({ name, onPress, style }) => {
-  if (style === true) {
+const Button = ({ name, onPress, style, color }) => {
+  if (style === true && color) {
     return (
-      <View style={styles.body02}>
+      <View style={[
+        styles.body02, { borderColor: color,
+          backgroundColor: color }
+      ]}>
         <TouchableOpacity style={styles.button} onPress={onPress} > 
-          <Text style={styles.buttonText02}>
+          <Text style={[styles.buttonText02, { color: colors.white }]}>
+            {name}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    )
+  } else if (color) {
+    return (
+      <View style={[styles.body02, { borderColor: color }]}>
+        <TouchableOpacity style={styles.button} onPress={onPress} > 
+          <Text style={[styles.buttonText02, { color }]}>
             {name}
           </Text>
         </TouchableOpacity>
@@ -43,9 +56,9 @@ const styles = StyleSheet.create({
   body02: {
     marginTop: 15,
     padding: 10,
-    borderColor: colors.white,
+    //  borderColor: colors.white,
     borderRadius: 10,
-    borderWidth: 1,
+    borderWidth: 2,
     height: 76,
    
   },

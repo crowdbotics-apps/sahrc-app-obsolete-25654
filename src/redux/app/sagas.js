@@ -6,7 +6,7 @@ import { BASE_URL, request } from '../../utils/http';
 import { sagasRunner } from '../../utils/redux';
 
 function getProfile () {
-  return request.get('/api/v1/users/me/');
+  return request.get('/api/v1/profile/');
 }
 
 function updateProfile ({ profile, token }) {
@@ -18,7 +18,7 @@ function updateProfile ({ profile, token }) {
 
   return axios({
     method: 'patch',
-    url: `${BASE_URL}/api/v1/users/${profile.id}/`,
+    url: `${BASE_URL}/api/v1/profile/${profile.id}/`,
     headers: {
       Authorization: `Token ${token}`,
       'Content-Type': 'multipart/form-data'
@@ -59,5 +59,5 @@ export default all([
   takeLatest(actions.APP_GET_PROFILE_REQUEST, handleGetProfile),
   takeLatest(actions.APP_UPDATE_PROFILE_REQUEST, handleUpdateProfile),
 
- 
+
 ]);

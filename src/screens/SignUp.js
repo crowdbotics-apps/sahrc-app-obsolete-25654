@@ -1,48 +1,70 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { 
   View, 
   StyleSheet, 
   ScrollView,
   Text,
   Image,
-  
+  TouchableOpacity,
+  Alert
 } from 'react-native'
 import { colors } from '../utils/colors'
 import Layout from '../components/Layout'
 import Input from '../components/Input'
 import Button from '../components/Button'
+import { useDispatch } from 'react-redux'
+import { signUp } from '../redux/auth/actions'
 
-const SignUp = () => (
-  <ScrollView>
-    <View style={styles.body}>
-      <Layout title="Sign Up"/>
-      <View style={styles.container} >
-        <Input placeholder="Email Address" />
-        <View style={styles.containerName}>
-          <Input placeholder="Name" width="45%" paddingLeft="5%"/>
-          <Input placeholder="Sure Name" width="45%" paddingLeft="5%"/>
+const SignUp = ({ navigation }) => {
+  const dispatch = useDispatch()
+  const [values, setValues] = useState({});
+
+  const onSubmit = () => {
+    if (!values.email || !values.password || !values.first_name || !values.last_name || !values.location || !values.age) {
+      Alert.alert('Please enter all fields')
+    } else if (values.password !== values.confirm_password) {
+      Alert.alert('Passwords do not match')
+    } else {
+      dispatch(signUp(values))
+    }
+  }
+
+  const onChange = (key, value) => {
+    setValues({
+      ...values,
+      [key]: value
+    })
+  }
+  return (
+    <ScrollView>
+      <View style={styles.body}>
+        <Layout title="Sign Up" onPressX={() => navigation.navigate('onBoarding')} onPressBack={() => navigation.navigate('onBoarding')}/>
+        <View style={styles.container} >
+          <Input onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
+          <View style={styles.containerName}>
+            <Input onChangeText={(v) => onChange('first_name', v)} value={values.first_name} placeholder="Name" width="45%" paddingLeft="5%"/>
+            <Input onChangeText={(v) => onChange('last_name', v)} value={values.last_name} placeholder="Sure Name" width="45%" paddingLeft="5%"/>
+          </View>
+          <View style={styles.containerName}>
+            <Input onChangeText={(v) => onChange('age', v)} value={values.age} placeholder="Age" width="45%" paddingLeft="5%"/>
+            <Input onChangeText={(v) => onChange('location', v)} value={values.location} placeholder="Location" width="45%" paddingLeft="5%"/>
+             
+          </View>
+          <Input onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
+          <Input onChangeText={(v) => onChange('confirm_password', v)} value={values.confirm_password} placeholder="Confirm Password" password={true} />
+          
         </View>
-        <View style={styles.containerName}>
-          <Input placeholder="Age" width="45%" paddingLeft="5%"/>
-          <Input placeholder="Location" width="45%" paddingLeft="5%"/>
-           
+        <Button onPress={onSubmit} name="Sign Up"/>
+        <Text style={styles.socialText}> Or  </Text>
+        <Text style={styles.socialText}> Social Media Sign Up </Text>
+        <View style={styles.socailContainer}>
+          <TouchableOpacity><Image style={styles.logo} source={require('../assets/facebookIcon1.png')} /></TouchableOpacity>
+          <TouchableOpacity><Image style={styles.logo} source={require('../assets/instagramIcon1.png')} /></TouchableOpacity>
         </View>
-        <Input placeholder="Password" password={true} />
-        <Input placeholder="Confirm Password" password={true} />
-        
       </View>
-      <Button name="Sign Up"/>
-      <Text style={styles.socialText}> Or  </Text>
-      <Text style={styles.socialText}> Social Media Sign Up </Text>
-      <View style={styles.socailContainer}>
-        <Image style={styles.logo} source={require('../assets/facebookIcon1.png')} />
-        <Image style={styles.logo} source={require('../assets/instagramIcon1.png')} />
-      </View>
-     
-         
-    </View>
-  </ScrollView>
-)
+    </ScrollView>
+  )
+}
 const styles = StyleSheet.create({
   logo: {
     width: 64,

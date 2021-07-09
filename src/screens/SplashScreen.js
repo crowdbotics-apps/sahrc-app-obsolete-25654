@@ -3,18 +3,20 @@ import {
   View, 
   StyleSheet,
   Text,
-  Image
+  Image,
+  ScrollView
 } from 'react-native'
 import { colors } from '../utils/colors'
 
 const SplashScreen = () => (
-  <View style={styles.body}>
-    <Image style={styles.icon} source={require('../assets/VectorWhite.png')} />
-    <Text style={styles.text}>The Social & Health</Text>
-    <Text style={styles.text}>Research Center</Text>
-    <Image style={styles.iconLoading} source={require('../assets/LoadingBar.png')} />
-         
-  </View>
+  <ScrollView style={styles.scroll}>
+    <View style={styles.body}>
+      <Image style={styles.icon} source={require('../assets/VectorWhite.png')} />
+      <Text style={styles.text}>The Social & Health</Text>
+      <Text style={styles.text}>Research Center</Text>
+      <Image style={styles.iconLoading} source={require('../assets/LoadingBar.png')} />
+    </View>
+  </ScrollView>
 )
 const styles = StyleSheet.create({
   iconLoading: {
@@ -37,9 +39,10 @@ const styles = StyleSheet.create({
   body: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.green,
-    padding: 17,
-    flex: 1
+    padding: 17
+  },
+  scroll: {
+    backgroundColor: colors.green
   }
 })
 export default SplashScreen;

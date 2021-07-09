@@ -25,16 +25,24 @@ import { APP_CLEAR_STATE } from '../app/constants';
 
 function sendLogin ({ email, password }) {
   return request.post('/api/v1/login/', {
-    username: email,
-    password,
+    email,
+    password
+
   });
 }
 function logout () {
   return request.get('/api/v1/logout/') 
 }
-
-function sendSignUp (user) {
-  return request.post('/api/v1/signup/', user);
+function sendSignUp ({ email, password, first_name, last_name, location, age }) {
+  return request.post(
+    '/api/v1/signup/', 
+    { email,
+      password,
+      first_name,
+      last_name,
+      location,
+      age }
+  );
 }
 
 function sendPasswordRecovery ({ email }) {
@@ -46,9 +54,9 @@ function sendPasswordRecovery ({ email }) {
 
 function *handleLogin (action) {
   const {
-    user: { email, password },
+    email, password,
   } = action;
-
+  
   try {
     const { status, data } = yield call(sendLogin, { 
       email,
@@ -86,12 +94,15 @@ function *handleLogin (action) {
 }
 
 function *handleSignUp (action) {
-  const { user } = action;
-
-  console.log('user :>> ', user);
+  const { email, password, first_name, last_name, location, age } = action;
 
   try {
-    const { status, data } = yield call(sendSignUp, user);
+    const { status, data } = yield call(sendSignUp, { email,
+      password,
+      first_name,
+      last_name,
+      location,
+      age });
     console.log('status :>> ', status);
     console.log('data :>> ', data);
 
@@ -100,7 +111,7 @@ function *handleSignUp (action) {
         type: AUTH_SIGNUP_SUCCESS,
       });
 
-      const loginInfo = yield call(sendLogin, user);
+      const loginInfo = yield call(sendLogin, email);
 
       if (loginInfo.status === 200) {
         yield put({
@@ -113,6 +124,7 @@ function *handleSignUp (action) {
         StorageUtils.setUser(loginInfo.data.user);
         addTokenToHttp(loginInfo.data.token);
         yield put(getProfile())
+        
       }
     } else {
       yield put({
@@ -131,11 +143,12 @@ function *handleSignUp (action) {
   }
 }
 
+
 function *handlePasswordRecovery (action) {
   const { email } = action;
 
   try {
-    const { status } = yield call(sendPasswordRecovery, email);
+    const { status } = yield call(sendPasswordRecovery, { email });
 
     if (status === 200) {
       yield put({

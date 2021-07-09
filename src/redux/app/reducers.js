@@ -1,7 +1,7 @@
 import * as actions from './constants';
 
 const initialState = {
-  metrics: {}, 
+  metrics: {},
   isLoading: false,
   profile: {},
   errors: {},

@@ -8,14 +8,14 @@ import {
 } from 'react-native'
 import { colors } from '../utils/colors'
 
-const Layout = ({ title }) => (
+const Layout = ({ title, onPressX, onPressBack }) => (
   <View style={styles.body}>
     <View style={styles.header}>
       <Image style={styles.logo} source={require('../assets/logoText.png')} />
-      <TouchableOpacity><Image style={styles.icon_x} source={require('../assets/icons=x.png')} /></TouchableOpacity>
+      <TouchableOpacity onPress={onPressX}><Image style={styles.icon_x} source={require('../assets/icons=x.png')} /></TouchableOpacity>
     </View>
     <View style={styles.titleBar}>
-      <TouchableOpacity><Image style={styles.icon_back} source={require('../assets/backIcon.png')} /></TouchableOpacity>
+      <TouchableOpacity onPress={onPressBack}><Image style={styles.icon_back} source={require('../assets/backIcon.png')} /></TouchableOpacity>
       <Text style={styles.titleText}>{title}</Text>
     </View>
   </View>
