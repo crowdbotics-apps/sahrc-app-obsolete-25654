@@ -39,7 +39,7 @@ const SignUp = ({ navigation }) => {
   return (
     <ScrollView>
       <View style={styles.body}>
-        <Layout title="Sign Up" onPressX={() => navigation.navigate('OnBoarding')} onPressBack={() => navigation.navigate('OnBoarding')}/>
+        <Layout title="Sign Up" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('Welcome')}/>
         <View style={styles.container} >
           <Input onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
           <View style={styles.containerName}>

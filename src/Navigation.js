@@ -10,7 +10,7 @@ import ForgotPassword from './screens/ForgotPassword';
 import NewPassword from './screens/NewPassword';
 import SignUp from './screens/SignUp';
 import SplashScreen from './screens/SplashScreen';
-import OnBoarding from './screens/OnBoarding';
+import Welcome from './screens/Welcome';
 import Profile from './screens/Profile';
 import Notification from './screens/Notification';
 import InputToken from './screens/InputToken';
@@ -69,7 +69,7 @@ const Navigation = () => {
         )
           : (
             <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="OnBoarding" component={OnBoarding} />
+              <Stack.Screen name="Welcome" component={Welcome} />
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="SignUp" component={SignUp} />
               <Stack.Screen name="ForgotPassword" component={ForgotPassword} />

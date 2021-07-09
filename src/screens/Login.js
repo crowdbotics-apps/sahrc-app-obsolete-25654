@@ -35,7 +35,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View style={styles.body}>
-      <Layout title="Log in" onPressX={() => navigation.navigate('OnBoarding')} onPressBack={() => navigation.navigate('OnBoarding')} />
+      <Layout title="Log in" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('Welcome')} />
       <View style={styles.login}>
         <Input onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
         <Input onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />

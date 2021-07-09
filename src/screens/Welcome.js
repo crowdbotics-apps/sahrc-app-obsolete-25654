@@ -9,10 +9,10 @@ import {
 import { colors } from '../utils/colors'
 import Button from '../components/Button'
 
-const title = `The Social & Health
-Research Center`
+const title = `The Social and Health
+Research Center INC`
 
-const OnBoarding = ({ navigation }) => (
+const Welcome = ({ navigation }) => (
   <ScrollView contentContainerStyle={styles.scrollContent} style={styles.scroll}>
     <View style={styles.body}>
       <Image style={styles.icon} source={require('../assets/VectorWhite.png')} />
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
     backgroundColor: colors.green,
   }
 })
-export default OnBoarding;
+export default Welcome;

@@ -25,7 +25,7 @@ const ForgotPassword = ({ navigation }) => {
 
   return (
     <View style={styles.body}>
-      <Layout title="Forgot password" onPressX={() => navigation.navigate('OnBoarding')} onPressBack={() => navigation.navigate('Login')}/>
+      <Layout title="Forgot password" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('Login')}/>
       <Input onChangeText={setEmail} placeholder="Enter email address" />
       <Button onPress={() => press()} name="Reset Password" />
     </View>

@@ -27,7 +27,7 @@ const NewPassword = ({ navigation }) => {
    
   return (
     <View style={styles.body}>
-      <Layout title="New Password" onPressX={() => navigation.navigate('OnBoarding')} onPressBack={() => navigation.navigate('ForgotPassword')}/>
+      <Layout title="New Password" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('ForgotPassword')}/>
       <Input onChangeText={setNewPassword} placeholder="Set new password " password={true} />
       <Input onChangeText={setConfirmPassword} placeholder="Confirm password " password={true} />
       <Button name="Submit" onPress={() => updatePassword()} />
