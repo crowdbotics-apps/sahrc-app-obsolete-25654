@@ -15,16 +15,19 @@ User = get_user_model()
 
 
 class SignupSerializer(serializers.ModelSerializer):
+    gender = serializers.ChoiceField(choices=User.GenderChoices)
     class Meta:
         model = User
-        fields = ('id', 'email', 'password', 'first_name', 'last_name', 'age', 'location', 'picture')
+        fields = ('id', 'email', 'password', 'first_name', 'last_name', 'dob', 'gender', 'zip_code', 'school_code', 'picture')
         extra_kwargs = {
             'password': {'write_only': True, 'style': {'input_type': 'password'}},
             'email': {'required': True, 'allow_null': False, 'allow_blank': False},
             'first_name': {'required': True, 'allow_null': False, 'allow_blank': False},
             'last_name': {'required': True, 'allow_null': False, 'allow_blank': False},
-            'age': {'required': True, 'allow_null': False},
-            'location': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'dob': {'required': True, 'allow_null': False},
+            'gender': {'required': True, 'allow_null': False},
+            'zip_code': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'school_code': {'required': True, 'allow_null': False, 'allow_blank': False},
             'picture': {'required': False, 'allow_null': True}
         }
 
@@ -47,8 +50,10 @@ class SignupSerializer(serializers.ModelSerializer):
             email=validated_data.get('email'),
             first_name=validated_data.get('first_name'),
             last_name=validated_data.get('last_name'),
-            age=validated_data.get('age'),
-            location=validated_data.get('location'),
+            dob=validated_data.get('dob'),
+            gender=validated_data.get('gender'),
+            zip_code=validated_data.get('zip_code'),
+            school_code=validated_data.get('school_code'),
             picture=validated_data.get('picture'),
             username=generate_unique_username([
                 validated_data.get('name'),
@@ -80,15 +85,18 @@ class HomePageSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
+    gender = serializers.ChoiceField(choices=User.GenderChoices)
     class Meta:
         model = User
-        fields = ['id', 'email', 'first_name', 'last_name', 'age', 'location', 'picture']
+        fields = ['id', 'email', 'first_name', 'last_name', 'dob', 'gender', 'zip_code', 'school_code', 'picture']
         extra_kwargs = {
             'email': {'read_only': True,},
             'first_name': {'required': True, 'allow_null': False, 'allow_blank': False},
             'last_name': {'required': True, 'allow_null': False, 'allow_blank': False},
-            'age': {'required': True, 'allow_null': False},
-            'location': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'dob': {'required': True, 'allow_null': False},
+            'gender': {'required': True, 'allow_null': False},
+            'zip_code': {'required': True, 'allow_null': False, 'allow_blank': False},
+            'school_code': {'required': True, 'allow_null': False, 'allow_blank': False},
             'picture': {'required': True, 'allow_null': False}
         }
 
