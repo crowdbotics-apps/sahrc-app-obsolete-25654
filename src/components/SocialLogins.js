@@ -12,8 +12,6 @@ import { colors } from '../utils/colors'
 import { Settings, LoginManager } from 'react-native-fbsdk-next';
 import InstagramLogin from 'react-native-instagram-login'
 import store from 'react-native-simple-store'
-import CookieManager from 'react-native-cookies';
-
 
 const SocialLogins = () => {
   useEffect(() => {
