@@ -3,9 +3,6 @@ import {
   View, 
   StyleSheet, 
   ScrollView,
-  Text,
-  Image,
-  TouchableOpacity,
   Alert
 } from 'react-native'
 import { colors } from '../utils/colors'
@@ -14,6 +11,7 @@ import Input from '../components/Input'
 import Button from '../components/Button'
 import { useDispatch } from 'react-redux'
 import { signUp } from '../redux/auth/actions'
+import SocialLogins from '../components/SocialLogins'
 
 const SignUp = ({ navigation }) => {
   const dispatch = useDispatch()
@@ -56,33 +54,12 @@ const SignUp = ({ navigation }) => {
           
         </View>
         <Button onPress={onSubmit} name="Sign Up"/>
-        <Text style={styles.socialText}> Or  </Text>
-        <Text style={styles.socialText}> Social Media Sign Up </Text>
-        <View style={styles.socailContainer}>
-          <TouchableOpacity><Image style={styles.logo} source={require('../assets/facebookIcon1.png')} /></TouchableOpacity>
-          <TouchableOpacity><Image style={styles.logo} source={require('../assets/instagramIcon1.png')} /></TouchableOpacity>
-        </View>
+        <SocialLogins/>
       </View>
     </ScrollView>
   )
 }
 const styles = StyleSheet.create({
-  logo: {
-    width: 64,
-    height: 64,
-    marginHorizontal: 15
-  },
-  socialText: {
-    fontSize: 16,
-    color: colors.white,
-    textAlign: 'center',
-    marginTop: 20
-  },
-  socailContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 20
-  },
   containerName: {
     flexDirection: 'row'
   },

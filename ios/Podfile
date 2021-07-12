@@ -12,6 +12,8 @@ target 'silent_pine_25654' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'silent_pine_25654Tests' do
     inherit! :complete
     # Pods for testing
