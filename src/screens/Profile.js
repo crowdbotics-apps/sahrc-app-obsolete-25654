@@ -63,6 +63,10 @@ const Profile = () => {
             <TextInput editable={edit} style={styles.input} onChangeText={(v) => onChange('location', v)} value={data.location}/>
           </View>
           <View style={styles.inputContainer}>
+            <Text style={styles.inputTitle}>School Code: </Text>
+            <TextInput editable={edit} style={styles.input} />
+          </View>
+          <View style={styles.inputContainer}>
             <View style={{ flexDirection: 'row',
               alignItems: 'center' }}>
               <Text style={styles.inputTitle}>Password: </Text>

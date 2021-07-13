@@ -39,18 +39,18 @@ const SignUp = ({ navigation }) => {
       <View style={styles.body}>
         <Layout title="Sign Up" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('Welcome')}/>
         <View style={styles.container} >
-          <Input onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
+          <Input image={require('../assets/message.png')} onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
           <View style={styles.containerName}>
-            <Input onChangeText={(v) => onChange('first_name', v)} value={values.first_name} placeholder="Name" width="48%" />
-            <Input onChangeText={(v) => onChange('last_name', v)} value={values.last_name} placeholder="Last Name" width="48%" marginLeft="4%"/>
+            <Input image={require('../assets/name.png')} onChangeText={(v) => onChange('first_name', v)} value={values.first_name} placeholder="Name" width="48%" />
+            <Input image={require('../assets/name.png')} onChangeText={(v) => onChange('last_name', v)} value={values.last_name} placeholder="Last Name" width="48%" marginLeft="4%"/>
           </View>
           <View style={styles.containerName}>
-            <Input onChangeText={(v) => onChange('birth_date', v)} value={values.birth_date} placeholder="Date of Birth" width="48%" />
-            <Input onChangeText={(v) => onChange('location', v)} value={values.location} placeholder="Location" width="48%" marginLeft="4%"/>
-             
+            <Input image={require('../assets/gender.png')} onChangeText={(v) => onChange('birth_date', v)} value={values.birth_date} placeholder="Gender" width="48%" />
+            <Input image={require('../assets/location.png')} onChangeText={(v) => onChange('location', v)} value={values.location} placeholder="Location" width="48%" marginLeft="4%"/>
           </View>
-          <Input onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
-          <Input onChangeText={(v) => onChange('confirm_password', v)} value={values.confirm_password} placeholder="Confirm Password" password={true} />
+          <Input image={require('../assets/schoolcode.png')} placeholder="School Code" />
+          <Input image={require('../assets/password.png')} onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
+          <Input image={require('../assets/password.png')} onChangeText={(v) => onChange('confirm_password', v)} value={values.confirm_password} placeholder="Confirm Password" password={true} />
           
         </View>
         <Button onPress={onSubmit} name="Sign Up"/>

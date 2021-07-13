@@ -28,8 +28,8 @@ const NewPassword = ({ navigation }) => {
   return (
     <View style={styles.body}>
       <Layout title="New Password" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('ForgotPassword')}/>
-      <Input onChangeText={setNewPassword} placeholder="Set new password " password={true} />
-      <Input onChangeText={setConfirmPassword} placeholder="Confirm password " password={true} />
+      <Input image={require('../assets/password.png')} onChangeText={setNewPassword} placeholder="Set new password " password={true} />
+      <Input image={require('../assets/password.png')} onChangeText={setConfirmPassword} placeholder="Confirm password " password={true} />
       <Button name="Submit" onPress={() => updatePassword()} />
       <Button name="Cancel" style={true} onPress={() => navigation.navigate('Login')} />
     </View>

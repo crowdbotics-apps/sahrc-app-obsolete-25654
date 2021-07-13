@@ -14,6 +14,7 @@ import Welcome from './screens/Welcome';
 import Profile from './screens/Profile';
 import Notification from './screens/Notification';
 import InputToken from './screens/InputToken';
+
 import StorageUtils from './utils/storage';
 import { addTokenToHttp } from './utils/http';
 import { setUser } from './redux/auth/actions';
@@ -72,9 +73,9 @@ const Navigation = () => {
               <Stack.Screen name="Welcome" component={Welcome} />
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="SignUp" component={SignUp} />
-              <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
               <Stack.Screen name="NewPassword" component={NewPassword} />
               <Stack.Screen name="InputToken" component={InputToken} />
+              <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             </Stack.Navigator>
           )
       }

@@ -2,12 +2,12 @@ import React from 'react'
 import { View, StyleSheet, TextInput, Image } from 'react-native'
 import { colors } from '../utils/colors';
 
-const Input = ({ placeholder, password, onChangeText, value, width, marginLeft }) => (
+const Input = ({ image, placeholder, password, onChangeText, value, width, marginLeft }) => (
   <View style={[
     styles.body, { width,
       marginLeft }
   ]}>
-    <Image style={styles.icon} source={require('../assets/message.png')} />
+    <Image style={styles.icon} source={image} />
     <TextInput style={styles.input}
       placeholder={placeholder} 
       secureTextEntry={password} 

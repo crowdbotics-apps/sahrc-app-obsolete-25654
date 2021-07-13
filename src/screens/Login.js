@@ -37,8 +37,9 @@ const Login = ({ navigation }) => {
     <View style={styles.body}>
       <Layout title="Log in" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('Welcome')} />
       <View style={styles.login}>
-        <Input onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
-        <Input onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
+        <Input image={require('../assets/message.png')} onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
+        <Input image={require('../assets/password.png')} onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
+        <Input image={require('../assets/schoolcode.png')} placeholder="School Code" />
         <Button onPress={onSubmit} name="Log in" />
       </View>
       <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.passwordContainer}><Text style={styles.passwordText}>Forgot password ? </Text></TouchableOpacity>
