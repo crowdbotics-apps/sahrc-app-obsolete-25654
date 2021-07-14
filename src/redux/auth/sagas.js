@@ -33,15 +33,10 @@ function sendLogin ({ email, password }) {
 function logout () {
   return request.get('/api/v1/logout/') 
 }
-function sendSignUp ({ email, password, first_name, last_name, location, age }) {
+function sendSignUp ({ data }) {
   return request.post(
     '/api/v1/signup/', 
-    { email,
-      password,
-      first_name,
-      last_name,
-      location,
-      age }
+    data
   );
 }
 
@@ -94,15 +89,10 @@ function *handleLogin (action) {
 }
 
 function *handleSignUp (action) {
-  const { email, password, first_name, last_name, location, age } = action;
+  const data = action;
 
   try {
-    const { status, data } = yield call(sendSignUp, { email,
-      password,
-      first_name,
-      last_name,
-      location,
-      age });
+    const { status, data } = yield call(sendSignUp, data);
     console.log('status :>> ', status);
     console.log('data :>> ', data);
 
@@ -111,7 +101,7 @@ function *handleSignUp (action) {
         type: AUTH_SIGNUP_SUCCESS,
       });
 
-      const loginInfo = yield call(sendLogin, email);
+      const loginInfo = yield call(sendLogin, data.email);
 
       if (loginInfo.status === 200) {
         yield put({

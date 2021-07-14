@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">silent_pine_25654</string>
     <string name="facebook_app_id">200453868675038</string>
-
+    <string name="facebook_client_token">ac37f60da69092c06b4ca537001d5020</string>
 </resources>

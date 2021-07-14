@@ -25,7 +25,7 @@ const Profile = () => {
     if (profile?.id) {
       setData({
         email: profile?.email,
-        location: profile?.location,
+        location: profile?.zip_code,
         first_name: profile?.first_name,
         last_name: profile?.last_name,
       })
@@ -59,8 +59,8 @@ const Profile = () => {
             <TextInput editable={edit} style={styles.input} onChangeText={(v) => onChange('email', v)} value={data.email} />
           </View>
           <View style={styles.inputContainer}>
-            <Text style={styles.inputTitle}>Location: </Text>
-            <TextInput editable={edit} style={styles.input} onChangeText={(v) => onChange('location', v)} value={data.location}/>
+            <Text style={styles.inputTitle}>Zip Code: </Text>
+            <TextInput editable={edit} style={styles.input} onChangeText={(v) => onChange('zip_code', v)} value={data.location}/>
           </View>
           <View style={styles.inputContainer}>
             <Text style={styles.inputTitle}>School Code: </Text>

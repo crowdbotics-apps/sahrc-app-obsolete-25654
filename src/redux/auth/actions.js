@@ -1,13 +1,8 @@
 import * as actions from './constants';
 
-export const signUp = ({ email, password, first_name, last_name, location, age }) => ({
+export const signUp = (data) => ({
   type: actions.AUTH_SIGNUP_REQUEST,
-  email,
-  password,
-  first_name,
-  last_name,
-  location,
-  age,
+  data
 });
 
 export const login = ({ email, password }) => ({

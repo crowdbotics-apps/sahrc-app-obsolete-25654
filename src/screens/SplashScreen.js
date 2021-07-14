@@ -14,16 +14,10 @@ const SplashScreen = () => (
       <Image style={styles.icon} source={require('../assets/VectorWhite.png')} />
       <Text style={styles.text}>The Social & Health</Text>
       <Text style={styles.text}>Research Center</Text>
-      <Image style={styles.iconLoading} source={require('../assets/LoadingBar.png')} />
     </View>
   </ScrollView>
 )
 const styles = StyleSheet.create({
-  iconLoading: {
-    width: 195,
-    height: 6,
-    marginTop: '100%'
-  },
   text: {
     color: colors.white,
     fontWeight: 'bold',

@@ -73,9 +73,9 @@ const Navigation = () => {
               <Stack.Screen name="Welcome" component={Welcome} />
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="SignUp" component={SignUp} />
+              <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
               <Stack.Screen name="NewPassword" component={NewPassword} />
               <Stack.Screen name="InputToken" component={InputToken} />
-              <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             </Stack.Navigator>
           )
       }

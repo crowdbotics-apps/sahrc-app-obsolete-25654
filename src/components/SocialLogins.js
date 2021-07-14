@@ -47,8 +47,7 @@ const SocialLogins = () => {
 
   return (
     <>
-      <Text style={styles.socialText}> Or  </Text>
-      <Text style={styles.socialText}> Social Media Sign Up </Text>
+      <Text style={styles.socialText}>Or Social Media Sign Up </Text>
       <View style={styles.socailContainer}>
         <TouchableOpacity onPress={() => loginWithFacebook()}><Image style={styles.logo} source={require('../assets/facebookIcon1.png')} /></TouchableOpacity>
         <TouchableOpacity onPress={() => this.instagramLogin.show()}>

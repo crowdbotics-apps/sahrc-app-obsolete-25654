@@ -31,7 +31,7 @@ const NewPassword = ({ navigation }) => {
       <Input image={require('../assets/password.png')} onChangeText={setNewPassword} placeholder="Set new password " password={true} />
       <Input image={require('../assets/password.png')} onChangeText={setConfirmPassword} placeholder="Confirm password " password={true} />
       <Button name="Submit" onPress={() => updatePassword()} />
-      <Button name="Cancel" style={true} onPress={() => navigation.navigate('Login')} />
+      <Button name="Cancel" color={colors.white} onPress={() => navigation.navigate('Login')} />
     </View>
   ) 
 }
