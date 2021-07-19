@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   body: {
     padding: 16,
     backgroundColor: colors.green,
-    flex: 1
+   
   }
 })
 export default Login;
