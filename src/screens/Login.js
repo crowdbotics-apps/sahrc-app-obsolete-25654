@@ -4,7 +4,8 @@ import {
   StyleSheet,
   TouchableOpacity,
   Text,
-  Alert
+  Alert,
+  ScrollView
 } from 'react-native'
 import Input from '../components/Input'
 import Button from '../components/Button'
@@ -12,6 +13,7 @@ import { colors } from '../utils/colors'
 import Layout from '../components/Layout'
 import { login } from '../redux/auth/actions';
 import { useDispatch } from 'react-redux';
+import SocialLogins from '../components/SocialLogins'
 
 const Login = ({ navigation }) => {
   const dispatch = useDispatch()
@@ -34,16 +36,19 @@ const Login = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.body}>
-      <Layout title="Log in" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('Welcome')} />
-      <View style={styles.login}>
-        <Input image={require('../assets/message.png')} onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
-        <Input image={require('../assets/password.png')} onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
-        <Input image={require('../assets/schoolcode.png')} placeholder="School Code" />
-        <Button onPress={onSubmit} name="Log in" />
+    <ScrollView>
+      <View style={styles.body}>
+        <Layout title="Log in" onPressX={() => navigation.navigate('Welcome')} onPressBack={() => navigation.navigate('Welcome')} />
+        <View style={styles.login}>
+          <Input image={require('../assets/message.png')} onChangeText={(v) => onChange('email', v)} value={values.email} placeholder="Email Address" />
+          <Input image={require('../assets/password.png')} onChangeText={(v) => onChange('password', v)} value={values.password} placeholder="Password" password={true} />
+          <Input image={require('../assets/schoolcode.png')} placeholder="School Code" />
+          <Button onPress={onSubmit} name="Log in" />
+        </View>
+        <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.passwordContainer}><Text style={styles.passwordText}>Forgot password ? </Text></TouchableOpacity>
+        <SocialLogins text="Sign In"/>
       </View>
-      <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.passwordContainer}><Text style={styles.passwordText}>Forgot password ? </Text></TouchableOpacity>
-    </View>
+    </ScrollView>
   ) 
 }
 const styles = StyleSheet.create({

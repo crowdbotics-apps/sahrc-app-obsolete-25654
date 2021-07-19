@@ -13,7 +13,7 @@ import { Settings, LoginManager } from 'react-native-fbsdk-next';
 import InstagramLogin from 'react-native-instagram-login'
 import store from 'react-native-simple-store'
 
-const SocialLogins = () => {
+const SocialLogins = ({ text }) => {
   useEffect(() => {
     if (Platform.OS === 'ios') {
       Settings?.initializeSDK();
@@ -47,7 +47,7 @@ const SocialLogins = () => {
 
   return (
     <>
-      <Text style={styles.socialText}>Or Social Media Sign Up </Text>
+      <Text style={styles.socialText}>Or Social Media {text} </Text>
       <View style={styles.socailContainer}>
         <TouchableOpacity onPress={() => loginWithFacebook()}><Image style={styles.logo} source={require('../assets/facebookIcon1.png')} /></TouchableOpacity>
         <TouchableOpacity onPress={() => this.instagramLogin.show()}>

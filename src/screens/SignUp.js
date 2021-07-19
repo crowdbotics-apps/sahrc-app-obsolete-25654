@@ -85,7 +85,7 @@ const SignUp = ({ navigation }) => {
           
         </View>
         <Button onPress={onSubmit} name="Sign Up"/>
-        <SocialLogins/>
+        <SocialLogins text="Sign Up"/>
       </View>
     </ScrollView>
   )
