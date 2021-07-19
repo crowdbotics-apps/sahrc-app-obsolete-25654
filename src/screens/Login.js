@@ -46,12 +46,18 @@ const Login = ({ navigation }) => {
           <Button onPress={onSubmit} name="Log in" />
         </View>
         <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.passwordContainer}><Text style={styles.passwordText}>Forgot password ? </Text></TouchableOpacity>
-        <SocialLogins text="Sign In"/>
+        <View style={styles.social}>
+          <SocialLogins text="Sign In"/>
+        </View>
       </View>
     </ScrollView>
   ) 
 }
 const styles = StyleSheet.create({
+  social: {
+    paddingTop: 10,
+    height: 200
+  },
   passwordText: {
     fontSize: 16,
     color: colors.white
@@ -65,7 +71,8 @@ const styles = StyleSheet.create({
 
   },
   body: {
-    padding: 16,
+    padding: 17,
+    paddingBottom: 25,
     backgroundColor: colors.green,
    
   }
