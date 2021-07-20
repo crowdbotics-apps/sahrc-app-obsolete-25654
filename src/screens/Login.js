@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { 
+  ScrollView,
   View, 
   StyleSheet,
   TouchableOpacity,
   Text,
-  Alert,
-  ScrollView
+  Alert
 } from 'react-native'
 import Input from '../components/Input'
 import Button from '../components/Button'
